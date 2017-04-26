@@ -15,6 +15,8 @@ import javax.crypto.spec.DESedeKeySpec;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+import java.util.Base64;
+
 public class Encrypter {
 
     public static final String ENC_DEFAULT_KEY = "YUNWEUYSKHWKHFABCUEKWYRNUI";
@@ -74,9 +76,8 @@ public class Encrypter {
             return bytes2String(ciphertext);
         } catch (final Exception e) {
             throw new RuntimeException ("Problem on decrypt!");
-         //   e.printStackTrace();
         }
-        return "";
+
     }
 
     public String encrypt(String decrstr) {
