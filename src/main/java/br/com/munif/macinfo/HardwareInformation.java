@@ -8,17 +8,19 @@ import java.util.Enumeration;
 import java.util.Scanner;
 
 public class HardwareInformation {
-    
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("MAC VALUE---->"+Encrypter.getMacValue());
-        Encrypter en=new Encrypter();
+        System.out.println("MAC VALUE---->" + Encrypter.getMacValue());
+        Encrypter en = new Encrypter("F23C9124F1A1");
         System.out.print("---->");
-        
-        String encrypt = scanner.nextLine();
-        System.out.println("---->"+encrypt);
+        String encrypt = "SSTjeFnydggsP14VYDNInAVAIb4IOZDA";
+        //en.encrypt("Munif Gebara Junior");
+
+        //String encrypt = scanner.nextLine();
+        System.out.println(encrypt);
         String decrypt = en.decrypt(encrypt);
-        System.out.println("---->"+decrypt);
+        System.out.println("---->" + decrypt);
     }
 
     public static void main2(String[] args) {
@@ -28,10 +30,10 @@ public class HardwareInformation {
 
             while (networkInterfaces.hasMoreElements()) {
                 NetworkInterface network = networkInterfaces.nextElement();
-                System.out.print("----> "+network.getDisplayName()+" "+network.getName());
+                System.out.print("----> " + network.getDisplayName() + " " + network.getName());
                 byte[] mac = network.getHardwareAddress();
-                if (mac == null){
-                    mac=new byte[]{0,0,0,0,0,0};
+                if (mac == null) {
+                    mac = new byte[]{0, 0, 0, 0, 0, 0};
                 }
                 System.out.print("Current MAC address : ");
                 StringBuilder sb = new StringBuilder();
