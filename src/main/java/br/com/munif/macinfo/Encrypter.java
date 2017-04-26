@@ -1,8 +1,6 @@
 package br.com.munif.macinfo;
 
 import java.net.NetworkInterface;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.spec.KeySpec;
 import java.util.Enumeration;
 
@@ -11,9 +9,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.DESedeKeySpec;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import java.util.Base64;
 
@@ -70,8 +65,7 @@ public class Encrypter {
         try {
             final SecretKey key = keyFactory.generateSecret(keySpec);
             cipher.init(Cipher.DECRYPT_MODE, key);
-            BASE64Decoder base64decoder = new BASE64Decoder();
-            byte[] plaintxt = base64decoder.decodeBuffer(encstr);
+            byte[] plaintxt=Base64.getDecoder().decode(encstr);
             byte[] ciphertext = cipher.doFinal(plaintxt);
             return bytes2String(ciphertext);
         } catch (final Exception e) {
@@ -89,8 +83,7 @@ public class Encrypter {
             cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] cleartext = decrstr.getBytes(ENCODING);
             byte[] ciphertext = cipher.doFinal(cleartext);
-            BASE64Encoder base64encoder = new BASE64Encoder();
-            return base64encoder.encode(ciphertext);
+            return Base64.getEncoder().encodeToString(ciphertext);
         } catch (Exception e) {
             e.printStackTrace();
         }
