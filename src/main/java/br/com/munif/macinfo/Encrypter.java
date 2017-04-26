@@ -28,7 +28,7 @@ public class Encrypter {
     private static final String ENCODING = "UTF8";
 
     public Encrypter() {
-        this("DES", ENC_DEFAULT_KEY);
+        this("DES", getMacValue());
     }
 
     public Encrypter(String key) {
