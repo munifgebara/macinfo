@@ -5,10 +5,23 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Enumeration;
+import java.util.Scanner;
 
 public class HardwareInformation {
-
+    
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("MAC VALUE---->"+Encrypter.getMacValue());
+        Encrypter en=new Encrypter();
+        System.out.print("---->");
+        
+        String encrypt = scanner.nextLine();
+        System.out.println("---->"+encrypt);
+        String decrypt = en.decrypt(encrypt);
+        System.out.println("---->"+decrypt);
+    }
+
+    public static void main2(String[] args) {
 
         try {
             Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
